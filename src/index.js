@@ -9,3 +9,9 @@ app.listen(PORT, HOST, (err) => {
   }
   console.log(`server is running on ${HOST}:${PORT}`);
 })
+var http = require('http')
+
+http.createServer((req, res) => {
+    res.write('hello world, will it change?')
+    res.end()
+}).listen(8000)
