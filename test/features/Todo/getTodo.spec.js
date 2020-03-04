@@ -8,10 +8,6 @@ describe('testTodo', () => {
     const res = await testClient
       .get(`/todos/${process.env.TEST_TODO_ID}`)
     expect(res.status).toBe(200);
-
-    console.log('what is the problem');
-    console.log(process.env.TEST_TODO_ID);
-
     expect(
       Object.keys(res.body)
     ).toEqual(expect.arrayContaining([
