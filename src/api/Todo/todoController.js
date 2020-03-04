@@ -83,7 +83,7 @@ const updateTodoId = (req, res) => {
     if (!id){
         res.status(400).send('Error')
     }
-    const sqlTodo = 'UPDATE todo SET title = ? WHERE id = ?';
+    const sqlTodo = 'UPDATE todo SET title = ?, updatedAt = now() WHERE id = ?';
     db.query(sqlTodo, [updateTitle, id], (error, results) => {
         if (error){
                console.log('error occurred', error)
@@ -102,7 +102,7 @@ const completeTodoId = (req, res) => {
     if (!id){
             res.status(400).send('Error')
     }
-    const sqlTodo = 'UPDATE todo SET isCompleted = true WHERE id = ?';
+    const sqlTodo = 'UPDATE todo SET isCompleted = true, updatedAt = now() WHERE id = ?';
     db.query(sqlTodo, [id], (error, results) => {
         if (error){
             console.log('error occurred', error)
@@ -140,8 +140,8 @@ const deleteTodoId = (req, res) => {
                console.log('error occurred', error)
                res.status(500).send('Server Error')
            } else {
-               //res.status(200).send('success');
-               res.send(results);
+
+               res.send({"msg": "success"});
            }
     });
 }
