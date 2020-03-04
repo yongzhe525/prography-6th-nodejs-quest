@@ -5,10 +5,18 @@
 // 할일 생성
 import './Todo/createTodo.spec'
 
+
 // 할일 읽기
 import './Todo/getTodos.spec'
+
 import './Todo/getTodo.spec'
 
+// 할일 완성
+import './Todo/completeTodo.spec'
+
+
+import './Comment/removeComment.spec'
+/*
 // 댓글 생성
 import './Comment/createComment.spec'
 
@@ -28,3 +36,4 @@ import './Todo/createTodo.spec'
 
 // 할일 삭제
 import './Todo/removeTodo.spec'
+*/
