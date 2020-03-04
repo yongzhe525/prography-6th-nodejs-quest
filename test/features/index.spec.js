@@ -16,6 +16,7 @@ import './Comment/createComment.spec'
 import './Comment/getComments.spec'
 import './Comment/getComment.spec'
 
+
 // 댓글 수정
 import './Comment/updateComment.spec'
 
@@ -24,7 +25,7 @@ import './Comment/removeComment.spec'
 
 // 할일 수정
 import './Todo/updateTodo.spec'
-import './Todo/createTodo.spec'
+import './Todo/completeTodo.spec'
 
 // 할일 삭제
 import './Todo/removeTodo.spec'
