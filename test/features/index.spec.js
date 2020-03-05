@@ -6,8 +6,8 @@
 import './Todo/createTodo.spec'
 
 // 할일 읽기
-import './Todo/getTodos.spec'
 import './Todo/getTodo.spec'
+import './Todo/getTodos.spec'
 
 // 댓글 생성
 import './Comment/createComment.spec'

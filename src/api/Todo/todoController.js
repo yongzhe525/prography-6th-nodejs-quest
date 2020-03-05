@@ -134,7 +134,8 @@ const deleteTodoId = (req, res) => {
     if (!id){
         res.status(400).send('Error')
     }
-    const sqlTodo = 'DELETE from todo WHERE id = ?';
+    //const sqlTodo = 'DELETE from todo WHERE id = ?';
+    const sqlTodo = 'DELETE td, ta FROM todo td JOIN tag ta ON td.id = ta.todo_id WHERE td.id = ?';
     db.query(sqlTodo, [id], (error, results) => {
         if (error){
                console.log('error occurred', error)
