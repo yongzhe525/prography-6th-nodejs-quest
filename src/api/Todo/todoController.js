@@ -37,9 +37,23 @@ const insertTodoList = (req, res) => {
 //2. 할일 목록
 const selectTodoList = (req, res) => {
 
-    const sqlTodo = 'SELECT t.*, (SELECT GROUP_CONCAT(s.tags) FROM tag s WHERE s.todo_id = t.id) AS tags FROM todo t';
-
-    db.query(sqlTodo, (error, results) => {
+// 추가: 할일 검색 로직 추가
+    if (!req.query.title){
+        const sqlTodo = 'SELECT t.*, (SELECT GROUP_CONCAT(s.tags) FROM tag s WHERE s.todo_id = t.id) AS tags FROM todo t';
+        db.query(sqlTodo, (error, results) => {
+                if (error){
+                         console.log('error occurred', error)
+                         res.status(500).send('Server Error')
+                } else {
+                        for (let i = 0; i < results.length; i ++){
+                            results[i].tags = results[i].tags.split(',');
+                        }
+                        res.send(results);
+                      }
+        });
+    } else {
+        const sqlTodo = 'SELECT t.*, (SELECT GROUP_CONCAT(s.tags) FROM tag s WHERE s.todo_id = t.id) AS tags FROM todo t WHERE t.title like ?';
+        db.query(sqlTodo, ["%" + req.query.title + "%"], (error, results) => {
         if (error){
                  console.log('error occurred', error)
                  res.status(500).send('Server Error')
@@ -49,7 +63,8 @@ const selectTodoList = (req, res) => {
                 }
                 res.send(results);
               }
-    });
+        });
+  }
 }
 
 //3. 할일 읽기
